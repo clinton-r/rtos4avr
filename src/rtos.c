@@ -897,7 +897,7 @@ uint8_t rtosFlagsTake(
     {
         // Request is for any of the flags, and at least one is available
         // Take the least-significant one
-        taken = ((available - 1) & available) ^ available;
+        taken = available & -available;
     }
     else
     {
@@ -983,7 +983,7 @@ void rtosFlagsSet(RTOS_FLAGS *pF, uint8_t flags)
             {
                 // Request is for any of the flags, and at least one is available
                 // Take the least-significant one
-                taken = ((available - 1) & available) ^ available;
+                taken = available & -available;
             }
             
             if (taken != 0)
